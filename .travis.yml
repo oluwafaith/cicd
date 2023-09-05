@@ -1,12 +1,8 @@
-language: node_js
+sudo: required
+services: 
+ - docker 
+before_install:
+ - docker build -t oluwafaith/cicd -f Dockerfile .
 
-node_js:
-  - "14"
-
-install:
-  - npm install
-
-script:
-  - npm test
-
-deploy:
+ script:
+  - docker run  -e CI=true
